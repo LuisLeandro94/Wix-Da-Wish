@@ -1,2 +1,5 @@
 # Wix-Da-Wish
-Database project for "Wix da Wish"
+"Wix da Wish" is the best database project ever created for a drag-and-drop, template based, website builder.
+Use it if you'd like to make heaps of money.
+If you ever wanna become the next Elon Musk, please, just do yourself a favor and use this database.
+$$$$$$$$$$$$$$$$$$$$$
