@@ -74,14 +74,6 @@ CREATE TABLE WebsiteComponents_Languages
     LogAdded  timestamp    not null
 );
 
-CREATE TABLE Languages
-(
-    Id        SERIAL PRIMARY KEY,
-    Name      varchar(250) not null,
-    LogUpdate timestamp    null,
-    LogAdded  timestamp    not null
-);
-
 CREATE TABLE Countries
 (
     Id        SERIAL PRIMARY KEY,
@@ -217,7 +209,7 @@ CREATE TABLE Plans_Templates
 (
     Id         SERIAL PRIMARY KEY,
     PlanId     int       not null,
-    templateId int       null,
+    templateId int       not null,
     LogUpdate  timestamp null,
     LogAdded   timestamp not null
 );
@@ -227,7 +219,7 @@ CREATE TABLE Templates_Components
 (
     Id          SERIAL PRIMARY KEY,
     componentId int       not null,
-    templateId  int       null,
+    templateId  int       not null,
     LogUpdate   timestamp null,
     LogAdded    timestamp not null
 );
@@ -236,7 +228,7 @@ CREATE TABLE Websites_Ads
 (
     Id        SERIAL PRIMARY KEY,
     adsId     int       not null,
-    websiteId int       null,
+    websiteId int       not null,
     LogUpdate timestamp null,
     LogAdded  timestamp not null
 );
@@ -245,7 +237,7 @@ CREATE TABLE Websites_CronJobs
 (
     Id        SERIAL PRIMARY KEY,
     websiteId int       not null,
-    cronjobId int       null,
+    cronjobId int       not null,
     LogUpdate timestamp null,
     LogAdded  timestamp not null
 );
@@ -290,7 +282,7 @@ ALTER TABLE Invoices
     ADD CONSTRAINT invoices_companies_fkey FOREIGN KEY (companyId) REFERENCES Companies (id);
 
 ALTER TABLE Website_Components
-    ADD COLUMN websiteId int UNIQUE not null;
+    ADD COLUMN websiteId int not null;
 ALTER TABLE Website_Components
     ADD COLUMN componentId int not null;
 ALTER TABLE Website_Components
@@ -298,21 +290,15 @@ ALTER TABLE Website_Components
 ALTER TABLE Website_Components
     ADD CONSTRAINT website_components_components_fkey FOREIGN KEY (componentId) REFERENCES components (id);
 
+ALTER TABLE WebsiteComponents_Languages
+    ADD COLUMN websitecomponentId int not null;
+ALTER TABLE WebsiteComponents_Languages
+    ADD COLUMN CountryId int not null;
+ALTER TABLE WebsiteComponents_Languages
+    ADD CONSTRAINT websitecomponents_languages_websitecomponents_fkey FOREIGN KEY (websitecomponentId) REFERENCES website_components (id);
+ALTER TABLE WebsiteComponents_Languages
+    ADD CONSTRAINT websitecomponents_languages_languages_fkey FOREIGN KEY (CountryId) REFERENCES countries (id);
 
-ALTER TABLE WebsiteComponents_Languages
-    ADD COLUMN websitecomponentId int UNIQUE not null;
-ALTER TABLE WebsiteComponents_Languages
-    ADD COLUMN languageId int not null;
-ALTER TABLE WebsiteComponents_Languages
-    ADD CONSTRAINT websitecomponents_languages_websitecomponents_fkey FOREIGN KEY (websitecomponentId) REFERENCES Websites (id);
-ALTER TABLE WebsiteComponents_Languages
-    ADD CONSTRAINT websitecomponents_languages_languages_fkey FOREIGN KEY (languageId) REFERENCES languages (id);
-
-
-ALTER TABLE Languages
-    ADD COLUMN countryID int not null;
-ALTER TABLE Languages
-    ADD CONSTRAINT languages_countries_fkey FOREIGN KEY (countryID) REFERENCES Countries (id);
 
 ALTER TABLE Tickets
     ADD COLUMN websiteId int;

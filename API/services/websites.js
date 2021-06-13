@@ -21,10 +21,12 @@ function getMultiple() {
         for (let index = 0; index < array.length; index++) {
           let item = array[index];
           let status = arrayAux[Math.random() * 3 | 0];
+          let randomPlan = Math.random() * 7;
+          let planId = [randomPlan | 0]
           stringQuery =
             stringQuery +
-            `INSERT INTO websites(Name, Status,LogAdded, PlanId, UserId, TemplateId)
-              VALUES ('${item.business_name}', '${status}', (timestamp '2021-02-10 20:00:00' + random() * (timestamp '2021-01-20 20:00:00' - timestamp '2021-12-10 10:00:00')),(trunc(random() * 7 + 1)),(SELECT id FROM users ORDER BY RANDOM() LIMIT 1),(SELECT id FROM Templates ORDER BY RANDOM() LIMIT 1)) \n`;
+            `INSERT INTO websites(Name, Status,LogAdded,PlanId,UserId, TemplateId)
+              VALUES ('${item.business_name}', '${status}', (timestamp '2021-02-10 20:00:00' + random() * (timestamp '2021-01-20 20:00:00' - timestamp '2021-12-10 10:00:00')),${planId},(SELECT id FROM users ORDER BY RANDOM() LIMIT 1),(SELECT  t.id FROM Templates t inner join  plans_templates pt on pt.templateid = t.id where pt.PlanId = ${planId} ORDER BY RANDOM() LIMIT 1)) \n`;
 
           stringQuery =
                    stringQuery + `INSERT INTO Invoices(companyid,websiteId, paymentmethodId, date,reference,qrCode,LogAdded) VALUES (1 ,(select id from websites order by id desc limit 1),(SELECT id FROM PaymentMethods ORDER BY RANDOM() LIMIT 1),(select LogAdded from websites order by id desc limit 1),'${item.uid}','${item.logo}',(select LogAdded from websites order by id desc limit 1)) \n`

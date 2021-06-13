@@ -195,7 +195,7 @@ VALUES
 ('12-06-2021','D://Flags','Uganda'),
 ('12-06-2021','D://Flags','Ukraine'),
 ('12-06-2021','D://Flags','United Arab Emirates'),
-('12-06-2021','D://Flags','United Kingdom'),
+('12-06-2021','D://Flags','England'),
 ('12-06-2021','D://Flags','United States'),
 ('12-06-2021','D://Flags','Uruguay'),
 ('12-06-2021','D://Flags','Uzbekistan'),

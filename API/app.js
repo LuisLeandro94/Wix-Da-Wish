@@ -7,6 +7,11 @@ var indexRouter = require('./routes/index');
 var quotesRouter = require('./routes/quotes');
 var usersRouter = require('./routes/users');
 var websitesRouter = require('./routes/websites');
+var componentsRouter = require('./routes/generateComponents');
+var templateRouter = require('./routes/template');
+var configsitesRouter = require('./routes/configsites');
+
+
 
 
 var app = express();
@@ -21,6 +26,12 @@ app.use('/', indexRouter);
 app.use('/quotes', quotesRouter);
 app.use('/users', usersRouter);
 app.use('/websites', websitesRouter);
+app.use('/comp', componentsRouter);
+app.use('/template', templateRouter);
+app.use('/configsites', configsitesRouter);
+
+
+
 
 
 
