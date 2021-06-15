@@ -21,7 +21,7 @@ async function getMultiple() {
   let stringQuery = "";
 
   arrayPlans.forEach((element) => {
-    let numberTemp = getRandomInt(1,5);
+    let numberTemp = getRandomInt(2,5);
     for (let index = 0; index < [numberTemp | 0]; index++) {
       stringQuery =
         stringQuery +
@@ -30,7 +30,7 @@ async function getMultiple() {
   });
 
   arrayTemplate.forEach((element) => {
-    let numberComp =  getRandomInt(1,7);
+    let numberComp =  getRandomInt(4,7);
     for (let index = 0; index < [numberComp | 0]; index++) {
       stringQuery =
         stringQuery +

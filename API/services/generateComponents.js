@@ -60,7 +60,7 @@ async function getMultiple() {
             ptValue = json_.translated_text.pt;
             stringQuery =
               stringQuery +
-              `INSERT INTO website_components(xcoord,ycoord,logadded,websiteid,componentid) VALUES(${xCoord},${yCoord},(timestamp '2021-02-10 20:00:00' + random() * (timestamp '2021-01-20 20:00:00' - timestamp '2021-12-10 10:00:00')),${element}, (SELECT c.id FROM components c INNER JOIN templates_components tc on tc.templateId = (select w.templateid from websites w where w.id = ${element} limit 1) ORDER BY RANDOM() LIMIT 1)) \n`;
+              `INSERT INTO website_components(xcoord,ycoord,logadded,websiteid,componentid) VALUES(${xCoord},${yCoord},(timestamp '2021-02-10 20:00:00' + random() * (timestamp '2021-01-20 20:00:00' - timestamp '2021-12-10 10:00:00')),${element}, (SELECT c.id FROM components c INNER JOIN templates_components tc on tc.templateId = (select w.templateid from websites w where w.id = 2 limit 1)  and c.id = tc.componentid ORDER BY RANDOM() LIMIT 1)) \n`;
 
             stringQuery =
               stringQuery +

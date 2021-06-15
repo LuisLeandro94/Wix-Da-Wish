@@ -2,6 +2,7 @@ create schema WixDaWish;
 SET search_path TO WixDaWish;
 
 
+
 --ENUMS
 CREATE TYPE Component_Status AS ENUM ('Active', 'Disabled', 'Maintenance');
 CREATE TYPE Trigger_Cron AS ENUM ('Hourly', 'Daily','Weekly', 'Monthly');

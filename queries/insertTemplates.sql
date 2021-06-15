@@ -1,6 +1,6 @@
 SET search_path TO WixDaWish;
 
-
+select * from Templates
 INSERT INTO Templates( Name, LogAdded)
 VALUES ('Divi',timestamp '2020-01-10 20:00:00' + random() * (timestamp '2021-01-20 20:00:00' - timestamp '2021-01-10 10:00:00'));
 

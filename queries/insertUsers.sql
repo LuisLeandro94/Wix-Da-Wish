@@ -1,5 +1,7 @@
 SET search_path TO WixDaWish;
 
+select * from users
+
 INSERT INTO users(FirstName, LastName, Email, Password,LastLogin,LastLogOut,GoogleToken,FacebookToken,CookieToken,LogUpdate ,LogAdded)
               VALUES ('Capucine','Blanc','capucine.blanc@example.com','celtic',null,null,'64aa3f6306ce56bfaf9378e63730aed3','null','21eb5ce5-095d-4d8d-a13c-d5c899ac7188',null,'2011-01-21T12:57:10.485Z')
 INSERT INTO UsersData(NIF, Address, PhoneNumber, Gender,Birthdate,Type,userId) VALUES ('2NNaN58457066 40','Rue du 8 Mai 1945','03-67-40-55-57','Female',null,'Web Developer', (select id from users order by id desc limit 1))
