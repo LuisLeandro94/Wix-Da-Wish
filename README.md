@@ -13,7 +13,7 @@ This project consist in 4 parts:<br>
 
 <br>
 
-## PORTUGUESE <br>
+## PORTUGUÊS <br>
 
 No âmbito da disciplina de Armazenamento e Acesso a Dados, presente no plano curricular do curso de “Desenvolvimento Web e Multimédia – Pós-Laboral” do Instituto Politécnico do Cávado e do Ave, foi-nos pedido o desenvolvimento de uma base de dados dado um determinado modelo de negócio, pelos alunos determinado. <br>
 O nosso grupo decidiu desenvolver este Sistema de Base de Dados para uma empresa fictícia “Wix da Wish”, baseado na conhecida plataforma de Desenvolvimento Web “Wix”. <br>
