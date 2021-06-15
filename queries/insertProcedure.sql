@@ -1,30 +1,5 @@
 SET search_path TO WixDaWish;
 
-truncate ads
-,components
-,websites_ads
-,smtp
-,invoices
-,websitecomponents_languages
-,plans_templates
-,tickets
-,usersdata
-,plans
-,databases
-,website_components
-,domains
-,companies
-,paymentmethods
-,cronjobs
-,users
-,templates_components
-,websites_cronjobs
-,plansconfig
-,templates
-,websites
-,servers
-,countries  restart identity;
-
 
 call CreateWebsite(21, 3, 2, 'Wix'::text, 3);
 call CreateWebSiteComponents(32, 100.10, 900, 32, '{145,192}', '{"Olá","Hello"}');
