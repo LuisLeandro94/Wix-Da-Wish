@@ -125,3 +125,78 @@ begin
     commit;
 end
 $$;
+
+create or replace procedure CreateUser(
+    firstname_int text,
+    lastname_int text,
+    email_int text,
+    password_int text,
+    nif_int int,
+    address_int text,
+    phonenumber_int int,
+    gender_int gender,
+    birthdate_int date,
+    type_int type_acount,
+    is_google boolean,
+    token varchar,
+    countryid_int int)
+    language plpgsql
+as
+$$
+begin
+    INSERT INTO users(firstname, lastname, email, password, googletoken, facebooktoken, cookietoken, logadded)
+    VALUES (firstname_int, lastname_int, email_int, password_int, case
+                                                                      when is_google = true then token
+                                                                      else ''
+        end, case
+                 when is_google = false then token
+                 else ''
+                end,
+            uuid_in(md5(random()::text || clock_timestamp()::text)::cstring), now());
+
+    INSERT INTO usersdata(nif, address, phonenumber, gender, birthdate, type, userid, countryid)
+    VALUES (nif_int, address_int, phonenumber_int, gender_int, birthdate_int, type_int,
+            (select id from users order by id desc limit 1), countryid_int);
+
+    commit;
+end
+$$;
+
+call createuser('Bruno', 'Faria', 'bruno_faria@gmail.com', 'faria', 250113954, 'Paredes',
+                '917773377', 'Male', '05-29-2002', 'Web Developer', true , '7sZR2366e44z23323' ,'145');
+                
+create or replace procedure CreateUser(
+    firstname_int text,
+    lastname_int text,
+    email_int text,
+    password_int text,
+    nif_int int,
+    address_int text,
+    phonenumber_int int,
+    gender_int gender,
+    birthdate_int date,
+    type_int type_acount,
+    is_google boolean,
+    token varchar,
+    countryid_int int)
+    language plpgsql
+as
+$$
+begin
+    INSERT INTO users(firstname, lastname, email, password, googletoken, facebooktoken, cookietoken, logadded)
+    VALUES (firstname_int, lastname_int, email_int, password_int, case
+                                                                      when is_google = true then token
+                                                                      else ''
+        end, case
+                 when is_google = false then token
+                 else ''
+                end,
+            uuid_in(md5(random()::text || clock_timestamp()::text)::cstring), now());
+
+    INSERT INTO usersdata(nif, address, phonenumber, gender, birthdate, type, userid, countryid)
+    VALUES (nif_int, address_int, phonenumber_int, gender_int, birthdate_int, type_int,
+            (select id from users order by id desc limit 1), countryid_int);
+
+    commit;
+end
+$$;
